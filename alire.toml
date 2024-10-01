@@ -1,0 +1,21 @@
+name = "a0b_stm32f401_usart"
+description = "A0B: STM32F401 USART (UART/SPI)"
+version = "0.1.0-dev"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded"]
+
+project-files = ["gnat/a0b_stm32f401_usart.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+a0b_spi = "*"
+a0b_stm32f401_gpio = "*"
