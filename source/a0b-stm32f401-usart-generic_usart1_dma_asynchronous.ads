@@ -10,6 +10,8 @@ pragma Restrictions (No_Elaboration_Code);
 
 with A0B.STM32F401.DMA.DMA2.Stream7;
 
+with A0B.STM32F401.USART_Function_Lines;
+
 generic
    Receive_Stream : not null access A0B.STM32F401.DMA.DMA_Stream'Class;
    TX_Pin         : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
@@ -30,8 +32,8 @@ is
       Receive_Stream   => Receive_Stream,
       Receive_Channel  => 4,
       TX_Pin           => TX_Pin,
-      TX_Line          => A0B.STM32F401.USART1_TX,
+      TX_Line          => A0B.STM32F401.USART_Function_Lines.USART1_TX'Access,
       RX_Pin           => RX_Pin,
-      RX_Line          => A0B.STM32F401.USART1_RX);
+      RX_Line          => A0B.STM32F401.USART_Function_Lines.USART1_RX'Access);
 
 end A0B.STM32F401.USART.Generic_USART1_DMA_Asynchronous;

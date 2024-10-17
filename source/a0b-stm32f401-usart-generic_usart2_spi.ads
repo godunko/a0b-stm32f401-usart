@@ -8,6 +8,8 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
+with A0B.STM32F401.USART_Function_Lines;
+
 generic
    MOSI_Pin : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
    MISO_Pin : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
@@ -25,11 +27,11 @@ is
       Controller => 2,
       Interrupt  => A0B.STM32F401.USART2,
       MOSI_Pin   => MOSI_Pin,
-      MOSI_Line  => A0B.STM32F401.USART2_TX,
+      MOSI_Line  => A0B.STM32F401.USART_Function_Lines.USART2_TX'Access,
       MISO_Pin   => MISO_Pin,
-      MISO_Line  => A0B.STM32F401.USART2_RX,
+      MISO_Line  => A0B.STM32F401.USART_Function_Lines.USART2_RX'Access,
       SCK_Pin    => SCK_Pin,
-      SCK_Line   => A0B.STM32F401.USART2_CK,
+      SCK_Line   => A0B.STM32F401.USART_Function_Lines.USART2_CK'Access,
       NSS_Pin    => NSS_Pin);
 
 end A0B.STM32F401.USART.Generic_USART2_SPI;

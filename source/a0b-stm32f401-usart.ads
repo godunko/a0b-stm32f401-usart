@@ -57,9 +57,9 @@ is
       Receive_Stream   : not null access A0B.STM32F401.DMA.DMA_Stream'Class;
       Receive_Channel  : A0B.STM32F401.DMA.Channel_Number;
       TX_Pin           : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      TX_Line          : A0B.STM32F401.Function_Line;
+      TX_Line          : not null access constant A0B.STM32F401.Function_Line_Descriptor;
       RX_Pin           : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      RX_Line          : A0B.STM32F401.Function_Line)
+      RX_Line          : not null access constant A0B.STM32F401.Function_Line_Descriptor)
    is tagged limited private
      with Preelaborable_Initialization;
 
@@ -84,11 +84,14 @@ is
       Controller : Controller_Number;
       Interrupt  : A0B.STM32F401.Interrupt_Number;
       MOSI_Pin   : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      MOSI_Line  : A0B.STM32F401.Function_Line;
+      MOSI_Line  :
+        not null access constant A0B.STM32F401.Function_Line_Descriptor;
       MISO_Pin   : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      MISO_Line  : A0B.STM32F401.Function_Line;
+      MISO_Line  :
+        not null access constant A0B.STM32F401.Function_Line_Descriptor;
       SCK_Pin    : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      SCK_Line   : A0B.STM32F401.Function_Line;
+      SCK_Line   :
+        not null access constant A0B.STM32F401.Function_Line_Descriptor;
       NSS_Pin    : not null access A0B.STM32F401.GPIO.GPIO_Line'Class)
    is limited new A0B.SPI.SPI_Slave_Device with private
      with Preelaborable_Initialization;
@@ -142,9 +145,9 @@ private
       Receive_Stream   : not null access A0B.STM32F401.DMA.DMA_Stream'Class;
       Receive_Channel  : A0B.STM32F401.DMA.Channel_Number;
       TX_Pin           : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      TX_Line          : A0B.STM32F401.Function_Line;
+      TX_Line          : not null access constant A0B.STM32F401.Function_Line_Descriptor;
       RX_Pin           : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      RX_Line          : A0B.STM32F401.Function_Line)
+      RX_Line          : not null access constant A0B.STM32F401.Function_Line_Descriptor)
    is limited new Abstract_USART_Driver (Peripheral, Controller) with record
       Transmit_Buffers  : access Buffer_Descriptor_Array;
       Transmit_Active   : A0B.Types.Unsigned_32;
@@ -165,11 +168,14 @@ private
       Controller : Controller_Number;
       Interrupt  : A0B.STM32F401.Interrupt_Number;
       MOSI_Pin   : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      MOSI_Line  : A0B.STM32F401.Function_Line;
+      MOSI_Line  :
+        not null access constant A0B.STM32F401.Function_Line_Descriptor;
       MISO_Pin   : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      MISO_Line  : A0B.STM32F401.Function_Line;
+      MISO_Line  :
+        not null access constant A0B.STM32F401.Function_Line_Descriptor;
       SCK_Pin    : not null access A0B.STM32F401.GPIO.GPIO_Line'Class;
-      SCK_Line   : A0B.STM32F401.Function_Line;
+      SCK_Line   :
+        not null access constant A0B.STM32F401.Function_Line_Descriptor;
       NSS_Pin    : not null access A0B.STM32F401.GPIO.GPIO_Line'Class) is
      limited new Abstract_USART_Driver (Peripheral, Controller)
        and A0B.SPI.SPI_Slave_Device with record

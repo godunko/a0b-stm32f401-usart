@@ -37,12 +37,12 @@ package body A0B.STM32F401.USART is
       --  Configure IO pins.
 
       Self.TX_Pin.Configure_Alternative_Function
-        (Line  => Self.TX_Line,
+        (Line  => Self.TX_Line.all,
          Mode  => A0B.STM32F401.GPIO.Push_Pull,
          Speed => A0B.STM32F401.GPIO.Very_High,
          Pull  => A0B.STM32F401.GPIO.No);
       Self.RX_Pin.Configure_Alternative_Function
-        (Line  => Self.RX_Line,
+        (Line  => Self.RX_Line.all,
          Mode  => A0B.STM32F401.GPIO.Push_Pull,
          Speed => A0B.STM32F401.GPIO.Very_High,
          Pull  => A0B.STM32F401.GPIO.No);
@@ -170,17 +170,17 @@ package body A0B.STM32F401.USART is
       --  Configure IO pins.
 
       Self.MOSI_Pin.Configure_Alternative_Function
-        (Line  => Self.MOSI_Line,
+        (Line  => Self.MOSI_Line.all,
          Mode  => A0B.STM32F401.GPIO.Push_Pull,
          Speed => A0B.STM32F401.GPIO.Very_High,
          Pull  => A0B.STM32F401.GPIO.No);
       Self.MISO_Pin.Configure_Alternative_Function
-        (Line  => Self.MISO_Line,
+        (Line  => Self.MISO_Line.all,
          Mode  => A0B.STM32F401.GPIO.Push_Pull,
          Speed => A0B.STM32F401.GPIO.Very_High,
          Pull  => A0B.STM32F401.GPIO.No);
       Self.SCK_Pin.Configure_Alternative_Function
-        (Line  => Self.SCK_Line,
+        (Line  => Self.SCK_Line.all,
          Mode  => A0B.STM32F401.GPIO.Push_Pull,
          Speed => A0B.STM32F401.GPIO.Very_High,
          Pull  => A0B.STM32F401.GPIO.No);
