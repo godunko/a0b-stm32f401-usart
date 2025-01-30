@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -439,6 +439,20 @@ package body A0B.STM32F401.USART is
       Self.Setup_Receive;
    end Receive;
 
+   -------------
+   -- Receive --
+   -------------
+
+   overriding procedure Receive
+     (Self            : in out USART_SPI_Device;
+      --  Transmit_Placeholder : A0B.Types.Unsigned_8;
+      Receive_Buffers : in out A0B.SPI.Buffer_Descriptor_Array;
+      On_Finished     : A0B.Callbacks.Callback;
+      Success         : in out Boolean) is
+   begin
+      raise Program_Error;
+   end Receive;
+
    --------------------
    -- Release_Device --
    --------------------
@@ -585,6 +599,19 @@ package body A0B.STM32F401.USART is
       Self.Finished        := Finished_Callback;
 
       Self.Peripheral.CR1.TXEIE := True;
+   end Transmit;
+
+   --------------
+   -- Transmit --
+   --------------
+
+   overriding procedure Transmit
+     (Self              : in out USART_SPI_Device;
+      Transmit_Buffers  : in out A0B.SPI.Buffer_Descriptor_Array;
+      Finished_Callback : A0B.Callbacks.Callback;
+      Success           : in out Boolean) is
+   begin
+      raise Program_Error;
    end Transmit;
 
 end A0B.STM32F401.USART;

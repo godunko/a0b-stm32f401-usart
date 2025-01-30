@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -199,6 +199,19 @@ private
       Transmit_Buffer   : aliased A0B.Types.Unsigned_8;
       Finished_Callback : A0B.Callbacks.Callback;
       Success           : in out Boolean);
+
+   overriding procedure Transmit
+     (Self              : in out USART_SPI_Device;
+      Transmit_Buffers  : in out A0B.SPI.Buffer_Descriptor_Array;
+      Finished_Callback : A0B.Callbacks.Callback;
+      Success           : in out Boolean);
+
+   overriding procedure Receive
+     (Self            : in out USART_SPI_Device;
+      --  Transmit_Placeholder : A0B.Types.Unsigned_8;
+      Receive_Buffers : in out A0B.SPI.Buffer_Descriptor_Array;
+      On_Finished     : A0B.Callbacks.Callback;
+      Success         : in out Boolean);
 
    overriding procedure Select_Device (Self : in out USART_SPI_Device);
 
