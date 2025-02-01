@@ -143,8 +143,10 @@ package body A0B.STM32F401.USART is
       --  Configure DMA stream for data transmit
 
       Self.Transmit_Stream.Configure_Memory_To_Peripheral
-        (Channel    => Self.Transmit_Channel,
-         Peripheral => Self.Peripheral.DR'Address);
+        (Channel              => Self.Transmit_Channel,
+         Peripheral           => Self.Peripheral.DR'Address,
+         Peripheral_Data_Size => A0B.STM32F401.DMA.Byte,
+         Memory_Data_Size     => A0B.STM32F401.DMA.Byte);
       Self.Transmit_Stream.Enable_Transfer_Complete_Interrupt;
       Self.Transmit_Stream.Set_Interrupt_Callback
         (On_Interrupt_Callbacks.Create_Callback (Self));
@@ -152,8 +154,10 @@ package body A0B.STM32F401.USART is
       --  Configure DMA stream for data receive
 
       Self.Receive_Stream.Configure_Peripheral_To_Memory
-        (Channel    => Self.Receive_Channel,
-         Peripheral => Self.Peripheral.DR'Address);
+        (Channel              => Self.Receive_Channel,
+         Peripheral           => Self.Peripheral.DR'Address,
+         Peripheral_Data_Size => A0B.STM32F401.DMA.Byte,
+         Memory_Data_Size     => A0B.STM32F401.DMA.Byte);
       Self.Receive_Stream.Enable_Transfer_Complete_Interrupt;
       Self.Receive_Stream.Set_Interrupt_Callback
         (On_Interrupt_Callbacks.Create_Callback (Self));
